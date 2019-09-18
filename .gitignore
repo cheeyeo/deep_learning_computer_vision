@@ -1,5 +1,9 @@
 __pycache__
+*.pyc
 *.h5
 *.weights
 keras-yolo3
 Mask_RCNN
+kangaroo
+kangaroo_*/*
+data/*.h5
