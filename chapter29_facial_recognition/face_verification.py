@@ -1,5 +1,6 @@
-# Example of simple face verification using VGG Face model
 """
+Example of simple face verification using VGG Face model
+
 For face verification, we calculate a face embedding for a given new face and compare it with the embedding of a face known to the system.
 
 Face embedding is a vector representing features extracted from a face.
