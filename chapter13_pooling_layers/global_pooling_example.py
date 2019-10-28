@@ -1,5 +1,6 @@
-from keras.models import Sequential
-from keras.layers import Conv2D, GlobalMaxPooling2D
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, GlobalMaxPooling2D
 import numpy as np
 
 # Input data

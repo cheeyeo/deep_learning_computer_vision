@@ -1,6 +1,9 @@
-from keras.models import Sequential
-from keras.layers import Conv2D, AveragePooling2D
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, AveragePooling2D
 
 # Input data
 data = [[0, 0, 0, 1, 1, 0, 0, 0],
