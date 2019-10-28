@@ -1,6 +1,8 @@
 from tensorflow.keras.layers import Conv2D
 from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import concatenate
+from tensorflow.keras.layers import add
+from tensorflow.keras.layers import Activation
 
 def vgg_block(layer_in, num_filters, num_conv):
 	"""
@@ -58,5 +60,25 @@ def optimized_inception_module(layer_in, f1, f2_in, f2_out, f3_in, f3_out, f4_ou
 
 	return layer_out
 
-def residual_module():
-	pass
+def residual_module(layer_in, num_filters):
+	"""
+	Implementation of the residual identity module
+	for ResNet
+	"""
+
+	merge_input = layer_in
+
+	if layer_in.shape[-1] != num_filters:
+		merge_input = Conv2D(num_filters, (1,1), padding="same", activation="relu", kernel_initializer="he_normal")(layer_in)
+
+	conv1 = Conv2D(num_filters, (3,3), padding="same", activation="relu", kernel_initializer="he_normal")(layer_in)
+
+	conv2 = Conv2D(num_filters, (3,3), padding="same", activation="linear", kernel_initializer="he_normal")(conv1)
+
+	# add filters
+	layer_out = add([conv2, merge_input])
+
+	layer_out = Activation("relu")(layer_out)
+
+	return layer_out
+
